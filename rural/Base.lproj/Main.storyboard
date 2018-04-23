@@ -318,6 +318,7 @@
                                             </subviews>
                                         </view>
                                         <connections>
+                                            <outlet property="btnSalir" destination="Whx-R8-LNE" id="WA6-pM-dpt"/>
                                             <outlet property="imagen" destination="z0f-WZ-s8t" id="a74-nB-K90"/>
                                             <outlet property="lblNombre" destination="AKd-jN-BNu" id="yFD-a1-C5u"/>
                                         </connections>

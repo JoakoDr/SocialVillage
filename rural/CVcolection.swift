@@ -11,6 +11,8 @@ import UIKit
 class CVcolection: UICollectionViewCell {
     @IBOutlet var imagen:UIImageView?
     @IBOutlet var lblNombre:UILabel?
+    @IBOutlet var btnSalir:UIButton?
+    
     var imagenDescargada:UIImage?
     func mostrarImagen(url:String) {
         self.imagen?.image = nil
@@ -29,5 +31,6 @@ class CVcolection: UICollectionViewCell {
             }
         }
         //}
+        btnSalir?.layer.cornerRadius = 15
     }
 }
