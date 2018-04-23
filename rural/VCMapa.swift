@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    
+    @IBOutlet var btnSalir:UIButton?
     @IBOutlet var mapa:MKMapView?
     var locationManager:CLLocationManager?
    
@@ -30,6 +30,7 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             agregarPin(coordenada: coordTemp, titulo: pueblo.sNombre! )
         }
         // Do any additional setup after loading the view.
+        btnSalir?.layer.cornerRadius = 15
     }
     func agregarPin(coordenada:CLLocationCoordinate2D, titulo tpin:String)
     {

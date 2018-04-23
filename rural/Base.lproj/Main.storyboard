@@ -376,6 +376,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Mapa" id="9jy-5h-b3w"/>
                     <connections>
+                        <outlet property="btnSalir" destination="7DW-K2-OeV" id="xY3-Zp-MH2"/>
                         <outlet property="mapa" destination="UUi-iy-HyP" id="8vc-7d-msF"/>
                     </connections>
                 </viewController>
