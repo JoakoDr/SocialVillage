@@ -17,10 +17,6 @@ class pueblos: NSObject {
     let IDlat = "lat"
     let IDlon = "lon"
 
-
-    
-    
-    
     var sID:String?
     var sNombre:String?
     var sPoblacion:String?
