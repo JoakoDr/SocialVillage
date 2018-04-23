@@ -36,8 +36,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*DataHolder.sharedInstance.firestoreDB?.collection("pueblos").getDocuments() { (querySnapshot, err) in
+        btnsalir?.layer.cornerRadius = 15        /*DataHolder.sharedInstance.firestoreDB?.collection("pueblos").getDocuments() { (querySnapshot, err) in
             if let err = err {º                print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
