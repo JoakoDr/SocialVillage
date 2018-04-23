@@ -11,6 +11,7 @@
     <customFonts key="customFonts">
         <array key="Noteworthy.ttc">
             <string>Noteworthy-Bold</string>
+            <string>Noteworthy-Light</string>
         </array>
     </customFonts>
     <scenes>
@@ -397,6 +398,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="346"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.97356703369999997" green="0.97356703369999997" blue="0.97356703369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCelda" rowHeight="130" id="pcL-d3-vsU" userLabel="CeldaPrototiopo" customClass="celdaPrototiopo" customModule="rural" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
@@ -409,18 +411,10 @@
                                                     <rect key="frame" x="33" y="11" width="93" height="53"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj1-dy-am0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj1-dy-am0">
                                                     <rect key="frame" x="159" y="7" width="184" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Label">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="19" name="Noteworthy-Light"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="19"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -449,7 +443,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="l4e-y1-ZGv"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Lista" id="HNm-6w-GJe"/>
