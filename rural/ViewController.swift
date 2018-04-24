@@ -11,8 +11,8 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ViewController: UIViewController {
-     @IBOutlet var txtUser:UITextField?
-     @IBOutlet var txtPassword:UITextField?
+     @IBOutlet var txtUser:NuevoTextField?
+     @IBOutlet var txtPassword:NuevoTextField?
      @IBOutlet var btnLogin:UIButton?
      @IBOutlet var btnregistro:UIButton?
     

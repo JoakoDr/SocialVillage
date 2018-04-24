@@ -11,14 +11,14 @@ import FirebaseAuth
 import FirebaseFirestore
 class VCRegister: UIViewController {
     // e-mail
-    @IBOutlet var txtEmail:UITextField?
+    @IBOutlet var txtEmail:NuevoTextField?
 
     // contraseña introducida de nuevo
-    @IBOutlet var txtPassword2:UITextField?
+    @IBOutlet var txtPassword2:NuevoTextField?
     // usuario(tiene que ser un email)
-    @IBOutlet var txtUser:UITextField?
+    @IBOutlet var txtUser:NuevoTextField?
     //contraseña
-    @IBOutlet var txtPassword:UITextField?
+    @IBOutlet var txtPassword:NuevoTextField?
     //boton de continuar
     @IBOutlet var btnRegistro:UIButton?
     //boton de volver

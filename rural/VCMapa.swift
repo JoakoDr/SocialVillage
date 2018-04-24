@@ -14,7 +14,8 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var btnSalir:UIButton?
     @IBOutlet var mapa:MKMapView?
     var locationManager:CLLocationManager?
-   
+    var booleano = false;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager = CLLocationManager()
@@ -44,10 +45,16 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("------>.", locations[0])
-        let miSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let tempRegion:MKCoordinateRegion = MKCoordinateRegion(center: locations[0].coordinate, span: miSpan)
-        //mapa?.setRegion(tempRegion, animated: false)
+    
+        if(booleano == false){
+            print("------>.", locations[0])
+            let miSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let tempRegion:MKCoordinateRegion = MKCoordinateRegion(center: locations[0].coordinate, span: miSpan)
+      
+                mapa?.setRegion(tempRegion, animated: false)
+                booleano = true
+        }
+        
     }
 
     /*
