@@ -25,10 +25,11 @@ class DataHolder: NSObject {
     var miPerfil:Perfil = Perfil ()
     func initFirebase() {
         FirebaseApp.configure()
-        var db = Firestore.firestore()
+        //var db = Firestore.firestore()
         firestoreDB=Firestore.firestore()
         firStorage = Storage.storage()
-        firDataBasRef = Database.database().reference()
+        firStorageRef = firStorage?.reference()
+        //firDataBasRef = Database.database().reference()
     }
     
 }

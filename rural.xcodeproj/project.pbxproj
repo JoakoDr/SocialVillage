@@ -23,6 +23,7 @@
 		9ABA6E412073ACD40044DFBD /* VCRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA6E402073ACD40044DFBD /* VCRegister.swift */; };
 		A441458F2085F865002DA1DF /* VCMapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441458E2085F865002DA1DF /* VCMapa.swift */; };
 		A442A53A208F1C830064E133 /* NuevoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A442A539208F1C830064E133 /* NuevoTextField.swift */; };
+		A442A53C208F25BD0064E133 /* VCSelectImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A442A53B208F25BD0064E133 /* VCSelectImg.swift */; };
 		A4B8964A207F411200D68F9C /* pueblos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B89649207F411200D68F9C /* pueblos.swift */; };
 		A4BC19AF207CA6C200865539 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4BC19AE207CA6C200865539 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		9ABA6E402073ACD40044DFBD /* VCRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCRegister.swift; sourceTree = "<group>"; };
 		A441458E2085F865002DA1DF /* VCMapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMapa.swift; sourceTree = "<group>"; };
 		A442A539208F1C830064E133 /* NuevoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoTextField.swift; sourceTree = "<group>"; };
+		A442A53B208F25BD0064E133 /* VCSelectImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSelectImg.swift; sourceTree = "<group>"; };
 		A4B89649207F411200D68F9C /* pueblos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pueblos.swift; sourceTree = "<group>"; };
 		A4BC19AE207CA6C200865539 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 				9A45AEE1207F865F00436E66 /* Perfil.swift */,
 				A441458E2085F865002DA1DF /* VCMapa.swift */,
 				A442A539208F1C830064E133 /* NuevoTextField.swift */,
+				A442A53B208F25BD0064E133 /* VCSelectImg.swift */,
 			);
 			path = rural;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				9A4A3A732063B79600C2F232 /* rural.xcdatamodeld in Sources */,
 				A441458F2085F865002DA1DF /* VCMapa.swift in Sources */,
 				9ABA6E412073ACD40044DFBD /* VCRegister.swift in Sources */,
+				A442A53C208F25BD0064E133 /* VCSelectImg.swift in Sources */,
 				A4B8964A207F411200D68F9C /* pueblos.swift in Sources */,
 				9A99F6982076406700FDF1D7 /* celdaPrototiopo.swift in Sources */,
 				9A99F6962076284500FDF1D7 /* tablas.swift in Sources */,

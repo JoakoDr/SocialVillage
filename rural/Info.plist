@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Quiero usar mi camara</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -46,6 +48,8 @@
 	<string>¿Permites usar la localización exacta?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>¿Permites usar la localización exacta?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Quiero usar la galeria de imagenes</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
