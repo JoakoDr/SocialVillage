@@ -11,13 +11,14 @@ import FirebaseStorage
 
 class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imgSub:UIImageView?
+    @IBOutlet var btnSalir:UIButton?
         let imagePicker = UIImagePickerController()
     
     var imgData:Data?
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        // Do any additional setup after loading the view.
+        btnSalir?.layer.cornerRadius = 15        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,8 +41,9 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
     {
        
         if imgData != nil {
-          
-        let imagenRef = DataHolder.sharedInstance.firStorageRef?.child("imagenes/imagen1.jpg")
+            let tiempoMilis:Int = Int((Date().timeIntervalSince1970 * 1000.0).rounded())
+            let ruta:String = String(format: "imagenes/imagen%d.jpg", tiempoMilis)
+        let imagenRef = DataHolder.sharedInstance.firStorageRef?.child(ruta)
             let metadata =  StorageMetadata()
             metadata.contentType = "image/jpeg"
         // Upload the file to the path "images/rivers.jpg"

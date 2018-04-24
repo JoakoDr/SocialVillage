@@ -336,6 +336,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Subir Imagenes" id="ScK-4U-mdJ"/>
                     <connections>
+                        <outlet property="btnSalir" destination="XhT-Ld-TOZ" id="3oD-hp-fzS"/>
                         <outlet property="imgSub" destination="v3A-Sh-Axm" id="goB-01-0L0"/>
                     </connections>
                 </viewController>
