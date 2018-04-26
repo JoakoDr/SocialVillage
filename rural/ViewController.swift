@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, DataHolderDelegate {
      @IBOutlet var txtUser:NuevoTextField?
      @IBOutlet var txtPassword:NuevoTextField?
      @IBOutlet var btnLogin:UIButton?
@@ -18,34 +18,16 @@ class ViewController: UIViewController {
     
     
    @IBAction func eventoClickLogin()  {
-    Auth.auth().signIn(withEmail: (txtUser?.text)!, password: (txtPassword?.text)!) { (user, error) in
-        if (user != nil) {
-            let refperfiles = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document((user?.uid)!)
-            refperfiles?.getDocument { (document, error) in
-                if document != nil {
-                    DataHolder.sharedInstance.miPerfil.setMap(valores: (document?.data())!)
-                    print(document?.data()! as Any)
-                } else {
-                    print("Document does not exist")
-                }
-            }
-            print("Te Registraste !"+(user?.uid)!)
-            self.performSegue(withIdentifier: "transicionlogin", sender: self)
-        }else
-        {
-            print(error!)
-            
-        }
-    }
+    DataHolder.sharedInstance.login(user: (txtUser?.text)!, password: (txtPassword?.text)!, delegate: self )
+    
+    
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         btnLogin?.layer.cornerRadius = 10
          btnregistro?.layer.cornerRadius = 10
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            if(user != nil){
-                self.performSegue(withIdentifier: "transicionlogin", sender: self)
-            }
+           
         }
        //txtUser?.text = DataHolder.sharedInstance.miNombre
        // print("  "+DataHolder.sharedInstance.miNombre)
@@ -56,6 +38,12 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func DHDregistro(blFinLogin: Bool) {
+        if blFinLogin {
+            self.performSegue(withIdentifier: "transicionlogin", sender: self)
+        }
+        
     }
 
 

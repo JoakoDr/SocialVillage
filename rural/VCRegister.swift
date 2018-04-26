@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-class VCRegister: UIViewController {
+class VCRegister: UIViewController, DataHolderDelegate{
     // e-mail
     @IBOutlet var txtEmail:NuevoTextField?
 
@@ -35,34 +35,9 @@ class VCRegister: UIViewController {
         DataHolder.sharedInstance.miPerfil.sAltura = 189
         DataHolder.sharedInstance.miPerfil.sApellidos="Diaz"
         DataHolder.sharedInstance.miPerfil.sPueblo="Tarancon"//.miPerfil.sNombre = "nombre"
+        
         // if que comprueba que no queen campos vacios
-        if !((txtUser?.text?.isEmpty)! || (txtPassword?.text?.isEmpty)! || (txtPassword2?.text?.isEmpty)! || (txtEmail?.text?.isEmpty)!) {
-            // if que comprueba que ambas contraseñas y e-mails coincidan
-            if(txtPassword?.text == txtPassword2?.text){
-                // creamos el usuario
-                Auth.auth().createUser(withEmail: (txtEmail?.text)!, password: (txtPassword?.text)!){ (user, error) in
-                    // comprobamos que el usuario se ha registrado
-                    if (user != nil) {
-                        print("Te Registraste !")
-                         DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document((user?.uid)!).setData(DataHolder.sharedInstance.miPerfil.getMap()) { err in
-                            if let err = err {
-                                print("Error adding document: \(err)")
-                            } else {
-                                print("Document added with ID:")
-                            }
-                        }
-
-                        self.performSegue(withIdentifier: "transicionregistro", sender: self)
-                    }else
-                    {
-                        print(error!)
-                
-                    }
-                }
-                
-                
-            }
-        }
+        DataHolder.sharedInstance.registrarse(user: (txtEmail?.text)!, password: (txtPassword?.text)!, delegate: self)
         
     }
     
@@ -74,6 +49,12 @@ class VCRegister: UIViewController {
         fecha?.layer.cornerRadius = 15
    
         // Do any additional setup after loading the view.
+    }
+    func DHDregistro(blFinRegistro: Bool) {
+        if blFinRegistro {
+             self.performSegue(withIdentifier: "transicionregistro", sender: self)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

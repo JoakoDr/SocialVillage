@@ -23,7 +23,8 @@ class DataHolder: NSObject {
     var arCiudades:[pueblos] = []
     var arPueblos:[pueblos] = [] 
     var miPerfil:Perfil = Perfil ()
-   
+    
+    
     func initFirebase() {
         FirebaseApp.configure()
         //var db = Firestore.firestore()
@@ -35,6 +36,7 @@ class DataHolder: NSObject {
     func descargarColeccion(delegate:DataHolderDelegate) {
         //arCiudades;:[pueblos] = []
         var blFin:Bool = false
+        
         DataHolder.sharedInstance.firestoreDB?.collection("pueblos").addSnapshotListener() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -59,10 +61,56 @@ class DataHolder: NSObject {
         }
         
     }
+    func registrarse(user: String, password:String, delegate: DataHolderDelegate){
+        var blFinRegistro:Bool = false
+                Auth.auth().createUser(withEmail:user, password:password){ (user, error) in
+                    if (user != nil) {
+                        print("Te Registraste !")
+                        self.firestoreDB?.collection("perfiles").document((user?.uid)!).setData(self.miPerfil.getMap()) { err in
+                            if let err = err {
+                                print("Error adding document: \(err)")
+                            } else {
+                                print("Document added with ID:")
+                            }
+                        }
+                        delegate.DHDregistro!(blFinRegistro: true)
+                    }else
+                    {
+                        print(error!)
+                        
+                    }
+                }
     
+    }
+    func login(user: String, password: String, delegate: DataHolderDelegate){
+        var blFinLogin:Bool=false
+        Auth.auth().signIn(withEmail: (user), password: (password)) { (user, error) in
+        if (user != nil) {
+            let refperfiles = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document(
+            )
+            refperfiles?.getDocument { (document, error) in
+                if document != nil {
+                    self.miPerfil.setMap(valores: (document?.data())!)
+                    print(document?.data()! as Any)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+            print("Te Registraste !")
+            
+        }else
+        {
+            print("error!")
+            
+        }
+        }
+    }
 }
 
-@objc protocol DataHolderDelegate
-{
+@objc protocol DataHolderDelegate{
+    
     @objc optional func DHDdescargaCiudades(blFin:Bool)
+    @objc optional func DHDregistro(blFinRegistro:Bool)
+    @objc optional func DHDlogin(blFinLogin:Bool)
 }
+
