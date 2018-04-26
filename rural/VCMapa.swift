@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,DataHolderDelegate {
     @IBOutlet var btnSalir:UIButton?
     @IBOutlet var mapa:MKMapView?
     var locationManager:CLLocationManager?
@@ -18,18 +18,15 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataHolder.sharedInstance.descargarColeccion(delegate: self)
+        
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
         locationManager?.startUpdatingLocation()
         mapa?.showsUserLocation = true
         
-        for pueblo in DataHolder.sharedInstance.arPueblos {
-                var coordTemp:CLLocationCoordinate2D = CLLocationCoordinate2D()
-            coordTemp.latitude = pueblo.dlat!
-            coordTemp.longitude = pueblo.dlon!
-            agregarPin(coordenada: coordTemp, titulo: pueblo.sNombre! )
-        }
+        
         // Do any additional setup after loading the view.
         btnSalir?.layer.cornerRadius = 15
     }
@@ -56,7 +53,21 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
         
     }
-
+    func DHDdescargaCiudades(blFin: Bool) {
+        
+        if(blFin)
+        {
+            for pueblo in DataHolder.sharedInstance.arPueblos {
+                var coordTemp:CLLocationCoordinate2D = CLLocationCoordinate2D()
+                coordTemp.latitude = pueblo.dlat!
+                coordTemp.longitude = pueblo.dlon!
+                agregarPin(coordenada: coordTemp, titulo: pueblo.sNombre! )
+            }
+            print("me he descargado mapa")
+        }else {
+            print("error")
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -66,5 +77,8 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    //func descargaCiudades(blFin: Bool) {
+        
+   
+//}
 }

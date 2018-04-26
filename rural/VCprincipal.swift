@@ -8,38 +8,36 @@
 
 import UIKit
 
-class VCprincipal: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class VCprincipal: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,DataHolderDelegate {
     @IBOutlet var coleccion: UICollectionView?
     @IBOutlet var btnsalir:UIButton?
+    
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return self.arCiudades.count
+         return DataHolder.sharedInstance.arCiudades.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:CVcolection = collectionView.dequeueReusableCell(withReuseIdentifier: "idcelda2", for: indexPath) as! CVcolection
-        cell.lblNombre?.text = arCiudades[indexPath.row].sNombre
-        cell.mostrarImagen(url: DataHolder.sharedInstance.arPueblos[indexPath.row].sImagen!)
+        cell.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
+        cell.mostrarImagen(url: DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
         return cell
     
     }
-    var arCiudades:[pueblos] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataHolder.sharedInstance.firestoreDB?.collection("pueblos").addSnapshotListener() { (querySnapshot, err) in
-        if let err = err {
-            print("Error getting documents: \(err)")
-        } else {
-            for document in querySnapshot!.documents {
-                let pueblo:pueblos = pueblos()
-                pueblo.sID=document.documentID
-                pueblo.setMap(valores: document.data())
-                self.arCiudades.append(pueblo)
-                print("\(document.documentID) => \(document.data())")
-            }
-            self.refreshUI()
-        }
-        
+        //DataHolder.sharedInstance.vcPrincipal = self
+        DataHolder.sharedInstance.descargarColeccion(delegate: self)
     }
+    func DHDdescargaCiudades(blFin: Bool) {
+        print("me he descargado collections")
+    if(blFin)
+    {
+        self.refreshUI()
+        }
     }
         // Do any additional setup after loading the view.
     

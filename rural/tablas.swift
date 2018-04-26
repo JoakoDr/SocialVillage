@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 class tablas:
-UIViewController,UITableViewDelegate,UITableViewDataSource {
+UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
     @IBOutlet var btnsalir:UIButton?
     @IBOutlet var tablas:UITableView?
     
@@ -36,6 +36,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataHolder.sharedInstance.descargarColeccion(delegate: self)
         btnsalir?.layer.cornerRadius = 15        /*DataHolder.sharedInstance.firestoreDB?.collection("pueblos").getDocuments() { (querySnapshot, err) in
             if let err = err {º                print("Error getting documents: \(err)")
             } else {
@@ -89,7 +90,14 @@ UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func DHDdescargaCiudades(blFin: Bool) {
+        if(blFin)
+        {
+            print("Me he descargado la tabla")
+             self.refreshUI()
+        }
     
+    }
 
     /*
     // MARK: - Navigation
