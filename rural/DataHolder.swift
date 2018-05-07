@@ -44,6 +44,7 @@ class DataHolder: NSObject {
                 delegate.DHDdescargaCiudades!(blFin: false)
                 
             } else {
+                self.arCiudades = []
                 for document in querySnapshot!.documents {
                     let pueblo:pueblos = pueblos()
                     pueblo.sID=document.documentID
@@ -83,20 +84,21 @@ class DataHolder: NSObject {
     
     }
     func login(user: String, password: String, delegate: DataHolderDelegate){
-        var blFinLogin:Bool=false
+        //var blFinLogin:Bool=false
         Auth.auth().signIn(withEmail: (user), password: (password)) { (user, error) in
-        if (user != nil) {
-            let refperfiles = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document(
-            )
+        if (error == nil) {
+            let refperfiles = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document((user?.uid)!)
             refperfiles?.getDocument { (document, error) in
                 if document != nil {
-                    self.miPerfil.setMap(valores: (document?.data())!)
+                    print(document?.documentID)
+                    DataHolder.sharedInstance.miPerfil.setMap(valores: (document?.data())!)
                     print(document?.data()! as Any)
+                    delegate.DHDlogin!(blFinLogin: true)
                 } else {
                     print("Document does not exist")
                 }
             }
-            print("Te Registraste !")
+            print("Te Logeaste !")
             
         }else
         {

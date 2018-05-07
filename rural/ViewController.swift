@@ -39,7 +39,7 @@ class ViewController: UIViewController, DataHolderDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func DHDregistro(blFinLogin: Bool) {
+    func DHDlogin(blFinLogin: Bool) {
         if blFinLogin {
             self.performSegue(withIdentifier: "transicionlogin", sender: self)
         }
