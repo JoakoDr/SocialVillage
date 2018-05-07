@@ -23,6 +23,7 @@ class DataHolder: NSObject {
     var arCiudades:[pueblos] = []
     var arPueblos:[pueblos] = [] 
     var miPerfil:Perfil = Perfil ()
+    var hmImagenes:[String:UIImage] = [:]
     
     
     func initFirebase() {
@@ -33,6 +34,7 @@ class DataHolder: NSObject {
         firStorageRef = firStorage?.reference()
         //firDataBasRef = Database.database().reference()
     }
+    
     func descargarColeccion(delegate:DataHolderDelegate) {
         //arCiudades;:[pueblos] = []
         var blFin:Bool = false
