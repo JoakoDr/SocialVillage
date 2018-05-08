@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseFirestore
 
 class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imgSub:UIImageView?
@@ -60,6 +61,23 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
     }
+    @IBAction func accionBotonConfirmar()
+    {
+        var ref: DocumentReference? = nil
+        ref = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").addDocument(data: [
+            "Nombre": txtNombre?.text,
+            "Poblacion": txtPoblacion?.text,
+            "Localizacion": txtLocalizacion?.text,
+            "Provincia": txtProvincia?.text
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
     @IBAction func accionBotonSubir()
     {
        
