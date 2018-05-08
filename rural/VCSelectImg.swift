@@ -12,13 +12,36 @@ import FirebaseStorage
 class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imgSub:UIImageView?
     @IBOutlet var btnSalir:UIButton?
+    @IBOutlet var txtNombre:NuevoTextField?
+    @IBOutlet var txtLocalizacion:NuevoTextField?
+    @IBOutlet var txtProvincia:NuevoTextField?
+    @IBOutlet var txtPoblacion:NuevoTextField?
         let imagePicker = UIImagePickerController()
+    let alert:UIAlertController = UIAlertController(title: "Subir foto de perfil", message:  "¡Has subido tu imagen!", preferredStyle: UIAlertControllerStyle.actionSheet)
+    
+
+    
+    
+    
     
     var imgData:Data?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //create action and add them to alert
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        
         imagePicker.delegate = self
         btnSalir?.layer.cornerRadius = 15        // Do any additional setup after loading the view.
+        //imgSub?.layer.cornerRadius = 10.0
+        self.imgSub?.layer.cornerRadius = (self.imgSub?.frame.size.width)! / 2
+        self.imgSub?.clipsToBounds = true
+        self.imgSub?.layer.borderWidth = 1.0
+        self.imgSub?.layer.borderColor = UIColor.blue.cgColor
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +82,7 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
            // print("AAAA!!!! ",downloadURL)
         }
 
-       
+     self.present(alert, animated: true)
     }
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
