@@ -22,15 +22,15 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
           // return 0
         //}else{
         
-        return DataHolder.sharedInstance.arPueblos.count
+        return DataHolder.sharedInstance.arCiudades.count
       // }
     //}
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tableView.dequeueReusableCell(withIdentifier: "idCelda") as! celdaPrototiopo
-        celda.lblNombre?.text = DataHolder.sharedInstance.arPueblos[indexPath.row].sNombre
+        celda.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
         //celda.mostrarImagen(url: DataHolder.sharedInstance.arPueblos[indexPath.row].sImagen!)
-        celda.mostrarImagen(url:  DataHolder.sharedInstance.arPueblos[indexPath.row].sImagen!)
+        celda.mostrarImagen(url:  DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
         return celda
     }
     
@@ -55,12 +55,12 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                DataHolder.sharedInstance.arPueblos = []
+                DataHolder.sharedInstance.arCiudades = []
                 for document in querySnapshot!.documents {
                     let pueblo:pueblos = pueblos()
                     pueblo.sID=document.documentID
                     pueblo.setMap(valores: document.data())
-                    DataHolder.sharedInstance.arPueblos.append(pueblo)
+                    DataHolder.sharedInstance.arCiudades.append(pueblo)
                     print("\(document.documentID) => \(document.data())")
                 }
                 self.refreshUI()

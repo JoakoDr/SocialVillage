@@ -18,7 +18,7 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataHolder.sharedInstance.descargarColeccion(delegate: self)
+        
         
         locationManager = CLLocationManager()
         locationManager?.delegate = self
@@ -29,11 +29,14 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
         
         // Do any additional setup after loading the view.
         btnSalir?.layer.cornerRadius = 15
+        
+        DataHolder.sharedInstance.descargarColeccion(delegate: self)
     }
     func agregarPin(coordenada:CLLocationCoordinate2D, titulo tpin:String)
     {
         let annotation:MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = coordenada
+        print("********************************* ",coordenada)
         annotation.title = tpin
         mapa?.addAnnotation(annotation)
     }
@@ -57,7 +60,8 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
         
         if(blFin)
         {
-            for pueblo in DataHolder.sharedInstance.arPueblos {
+            print("---------------------->>>>>>>>> ",DataHolder.sharedInstance.arCiudades.count)
+            for pueblo in DataHolder.sharedInstance.arCiudades {
                 var coordTemp:CLLocationCoordinate2D = CLLocationCoordinate2D()
                 coordTemp.latitude = pueblo.dlat!
                 coordTemp.longitude = pueblo.dlon!

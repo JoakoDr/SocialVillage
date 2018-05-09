@@ -21,7 +21,7 @@ class DataHolder: NSObject {
     var firStorage:Storage?
     var firStorageRef:StorageReference?
     var arCiudades:[pueblos] = []
-    var arPueblos:[pueblos] = [] 
+    //var arPueblos:[pueblos] = [] 
     var miPerfil:Perfil = Perfil ()
     var hmImagenes:[String:UIImage] = [:]
     
