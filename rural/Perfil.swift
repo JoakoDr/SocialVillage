@@ -12,25 +12,28 @@ class Perfil: NSObject {
     
     //hay que poner todos los datos del registro
     var sNombre:String?
-    var sApellidos:String?
-    var sAltura:Int?
-    var sPueblo:String?
+    var sLocalizacion:String?
+    var sPoblacion:String?
+    var sProvincia:String?
+    var sImagen:String?
     // pasamos el hashmap descargado de la base de datos a las variables
     
     func setMap(valores:[String:Any]){
         sNombre = valores["Nombre"] as? String
-        sApellidos = valores["Apellido"] as? String
-        sAltura = valores["Altura"] as? Int
-        sPueblo = valores["Pueblo"] as? String
+        sLocalizacion = valores["Localizacion"] as? String
+        sPoblacion = valores["Poblacion"] as? String
+        sProvincia = valores["Provincia"] as? String
+        sImagen = valores["Imagen"] as? String
     }
     // este metodo convierte a hashmap los datos para guardarlos en la base de datos
     func getMap() -> [String:Any] {
         
         return [
             "Nombre": sNombre as Any,
-            "Apellido": sApellidos as Any,
-            "Altura": sAltura as Any,
-            "Pueblo": sPueblo as Any
+            "Localizacion": sLocalizacion as Any,
+            "Poblacion": sPoblacion as Any,
+            "Provincia": sProvincia as Any,
+            "Imagen": sImagen as Any
         ]
     }
    

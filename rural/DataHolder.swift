@@ -24,6 +24,7 @@ class DataHolder: NSObject {
     //var arPueblos:[pueblos] = [] 
     var miPerfil:Perfil = Perfil ()
     var hmImagenes:[String:UIImage] = [:]
+    var firUser:User?
     
     
     func initFirebase() {
@@ -68,14 +69,10 @@ class DataHolder: NSObject {
         var blFinRegistro:Bool = false
                 Auth.auth().createUser(withEmail:user, password:password){ (user, error) in
                     if (user != nil) {
+                        self.firUser = user
                         print("Te Registraste !")
-                        self.firestoreDB?.collection("perfiles").document((user?.uid)!).setData(self.miPerfil.getMap()) { err in
-                            if let err = err {
-                                print("Error adding document: \(err)")
-                            } else {
-                                print("Document added with ID:")
-                            }
-                        }
+                        self.savePerfil()
+                        
                         delegate.DHDregistro!(blFinRegistro: true)
                     }else
                     {
@@ -85,10 +82,22 @@ class DataHolder: NSObject {
                 }
     
     }
+
+    func savePerfil() {
+        self.firestoreDB?.collection("perfiles").document((firUser?.uid)!).setData(self.miPerfil.getMap()) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID:")
+            }
+        }
+    }
+   
     func login(user: String, password: String, delegate: DataHolderDelegate){
         //var blFinLogin:Bool=false
         Auth.auth().signIn(withEmail: (user), password: (password)) { (user, error) in
         if (error == nil) {
+            self.firUser = user
             let refperfiles = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document((user?.uid)!)
             refperfiles?.getDocument { (document, error) in
                 if document != nil {

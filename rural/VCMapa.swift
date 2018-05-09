@@ -36,7 +36,7 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
     {
         let annotation:MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = coordenada
-        print("********************************* ",coordenada)
+        //print("********************************* ",coordenada)
         annotation.title = tpin
         mapa?.addAnnotation(annotation)
     }
@@ -47,7 +47,7 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
         if(booleano == false){
-            print("------>.", locations[0])
+            //print("------>.", locations[0])
             let miSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
             let tempRegion:MKCoordinateRegion = MKCoordinateRegion(center: locations[0].coordinate, span: miSpan)
       
@@ -60,7 +60,7 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
         
         if(blFin)
         {
-            print("---------------------->>>>>>>>> ",DataHolder.sharedInstance.arCiudades.count)
+            //print("---------------------->>>>>>>>> ",DataHolder.sharedInstance.arCiudades.count)
             for pueblo in DataHolder.sharedInstance.arCiudades {
                 var coordTemp:CLLocationCoordinate2D = CLLocationCoordinate2D()
                 coordTemp.latitude = pueblo.dlat!

@@ -17,8 +17,10 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBOutlet var txtLocalizacion:NuevoTextField?
     @IBOutlet var txtProvincia:NuevoTextField?
     @IBOutlet var txtPoblacion:NuevoTextField?
+    var downloadURL = ""
         let imagePicker = UIImagePickerController()
     let alert:UIAlertController = UIAlertController(title: "Subir foto de perfil", message:  "¡Has subido tu imagen!", preferredStyle: UIAlertControllerStyle.actionSheet)
+    let alert1:UIAlertController = UIAlertController(title: "Perfil Subido", message:  "¡Has subido tu perfil!", preferredStyle: UIAlertControllerStyle.actionSheet)
     
 
     
@@ -32,6 +34,7 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
         //create action and add them to alert
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         
         imagePicker.delegate = self
@@ -63,19 +66,16 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
     }
     @IBAction func accionBotonConfirmar()
     {
-        var ref: DocumentReference? = nil
-        ref = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").addDocument(data: [
-            "Nombre": txtNombre?.text,
-            "Poblacion": txtPoblacion?.text,
-            "Localizacion": txtLocalizacion?.text,
-            "Provincia": txtProvincia?.text
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
+       
+        DataHolder.sharedInstance.miPerfil.sNombre=txtNombre?.text
+        DataHolder.sharedInstance.miPerfil.sLocalizacion=txtLocalizacion?.text
+        DataHolder.sharedInstance.miPerfil.sProvincia=txtProvincia?.text
+        DataHolder.sharedInstance.miPerfil.sPoblacion=txtPoblacion?.text
+        DataHolder.sharedInstance.miPerfil.sImagen = downloadURL
+        DataHolder.sharedInstance.savePerfil()
+        self.present(alert1, animated: true)
+
+        
     }
     
     @IBAction func accionBotonSubir()
@@ -96,8 +96,11 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
             }
             
             // Metadata contains file metadata such as size, content-type, and download URL.
-            let downloadURL = metadata.downloadURL
+            self.downloadURL = metadata.path!
            // print("AAAA!!!! ",downloadURL)
+            
+            
+            
         }
 
      self.present(alert, animated: true)
@@ -124,3 +127,4 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
     */
 
 }
+

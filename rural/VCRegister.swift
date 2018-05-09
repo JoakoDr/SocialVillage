@@ -31,11 +31,11 @@ class VCRegister: UIViewController, DataHolderDelegate{
     
     @IBAction func eventoClickLogin()  {
         
-        DataHolder.sharedInstance.miPerfil.sNombre="Nombre"
-        DataHolder.sharedInstance.miPerfil.sAltura = 189
-        DataHolder.sharedInstance.miPerfil.sApellidos="Diaz"
-        DataHolder.sharedInstance.miPerfil.sPueblo="Tarancon"//.miPerfil.sNombre = "nombre"
-        
+       // DataHolder.sharedInstance.miPerfil.sNombre="Nombre"
+       // DataHolder.sharedInstance.miPerfil.sAltura = 189
+       // DataHolder.sharedInstance.miPerfil.sApellidos="Diaz"
+        // DataHolder.sharedInstance.miPerfil.sPueblo="Tarancon"//.miPerfil.sNombre = "nombre"
+        DataHolder.sharedInstance.miPerfil.sNombre=txtUser?.text
         // if que comprueba que no queen campos vacios
         DataHolder.sharedInstance.registrarse(user: (txtEmail?.text)!, password: (txtPassword?.text)!, delegate: self)
         
