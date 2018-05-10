@@ -109,7 +109,7 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
             // Metadata contains file metadata such as size, content-type, and download URL.
             self.downloadURL = (metadata.downloadURL()?.absoluteString)!//.path!
            // print("AAAA!!!! ",downloadURL)
-            
+            print("----->"+self.downloadURL)
             
             
         }

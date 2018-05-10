@@ -28,7 +28,7 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
         
         
         // Do any additional setup after loading the view.
-        btnSalir?.layer.cornerRadius = 15
+       
         
         DataHolder.sharedInstance.descargarColeccion(delegate: self)
     }

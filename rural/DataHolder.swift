@@ -20,7 +20,7 @@ class DataHolder: NSObject {
     var firestoreDB:Firestore?
     var firStorage:Storage?
     var firStorageRef:StorageReference?
-    var arCiudades:[pueblos] = []
+    var arCiudades:[Perfil] = []
     //var arPueblos:[pueblos] = [] 
     var miPerfil:Perfil = Perfil ()
     var hmImagenes:[String:UIImage] = [:]
@@ -49,7 +49,7 @@ class DataHolder: NSObject {
             } else {
                 self.arCiudades = []
                 for document in querySnapshot!.documents {
-                    let pueblo:pueblos = pueblos()
+                    let pueblo:Perfil = Perfil()
                     pueblo.sID=document.documentID
                     pueblo.setMap(valores: document.data())
                     self.arCiudades.append(pueblo)
@@ -101,7 +101,7 @@ class DataHolder: NSObject {
             let refperfiles = DataHolder.sharedInstance.firestoreDB?.collection("perfiles").document((user?.uid)!)
             refperfiles?.getDocument { (document, error) in
                 if document != nil {
-                    print(document?.documentID)
+                    print(document?.documentID as Any)
                     DataHolder.sharedInstance.miPerfil.setMap(valores: (document?.data())!)
                     print(document?.data()! as Any)
                     delegate.DHDlogin!(blFinLogin: true)

@@ -30,7 +30,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
         let celda = tableView.dequeueReusableCell(withIdentifier: "idCelda") as! celdaPrototiopo
         celda.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
         //celda.mostrarImagen(url: DataHolder.sharedInstance.arPueblos[indexPath.row].sImagen!)
-        celda.mostrarImagen(url:  DataHolder.sharedInstance.miPerfil.sImagen!)
+        celda.mostrarImagen(url:  DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
         return celda
     }
     
@@ -38,7 +38,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         DataHolder.sharedInstance.descargarColeccion(delegate: self)
-        btnsalir?.layer.cornerRadius = 15        /*DataHolder.sharedInstance.firestoreDB?.collection("pueblos").getDocuments() { (querySnapshot, err) in
+                /*DataHolder.sharedInstance.firestoreDB?.collection("pueblos").getDocuments() { (querySnapshot, err) in
             if let err = err {º                print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
@@ -51,13 +51,13 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
             }
         }
         */
-        DataHolder.sharedInstance.firestoreDB?.collection("pueblos").addSnapshotListener() { (querySnapshot, err) in
+        DataHolder.sharedInstance.firestoreDB?.collection("perfiles").addSnapshotListener() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 DataHolder.sharedInstance.arCiudades = []
                 for document in querySnapshot!.documents {
-                    let pueblo:pueblos = pueblos()
+                    let pueblo:Perfil = Perfil()
                     pueblo.sID=document.documentID
                     pueblo.setMap(valores: document.data())
                     DataHolder.sharedInstance.arCiudades.append(pueblo)

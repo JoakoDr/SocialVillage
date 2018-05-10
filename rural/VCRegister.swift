@@ -44,9 +44,8 @@ class VCRegister: UIViewController, DataHolderDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Redondeamos los botones al cargar la app
-        btnVolver?.layer.cornerRadius = 15
-        btnRegistro?.layer.cornerRadius = 15
-        fecha?.layer.cornerRadius = 15
+     
+       
    
         // Do any additional setup after loading the view.
     }

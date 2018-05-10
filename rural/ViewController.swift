@@ -24,8 +24,7 @@ class ViewController: UIViewController, DataHolderDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnLogin?.layer.cornerRadius = 10
-         btnregistro?.layer.cornerRadius = 10
+       
         Auth.auth().addStateDidChangeListener { (auth, user) in
            
         }

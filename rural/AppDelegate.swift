@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  rural
 //
@@ -11,6 +11,7 @@ import CoreData
 
 
 
+ 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

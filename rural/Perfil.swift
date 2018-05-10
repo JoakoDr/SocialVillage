@@ -18,6 +18,7 @@ class Perfil: NSObject {
     var sImagen:String?
     var sLongitud:Double?
     var sLatitud:Double?
+    var sID:String?
     // pasamos el hashmap descargado de la base de datos a las variables
     
     func setMap(valores:[String:Any]){
