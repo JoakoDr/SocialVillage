@@ -16,6 +16,8 @@ class Perfil: NSObject {
     var sPoblacion:String?
     var sProvincia:String?
     var sImagen:String?
+    var sLongitud:Double?
+    var sLatitud:Double?
     // pasamos el hashmap descargado de la base de datos a las variables
     
     func setMap(valores:[String:Any]){
@@ -24,6 +26,8 @@ class Perfil: NSObject {
         sPoblacion = valores["Poblacion"] as? String
         sProvincia = valores["Provincia"] as? String
         sImagen = valores["Imagen"] as? String
+        sLongitud = valores["Longitud"] as? Double
+        sLatitud = valores["Latitud"] as? Double
     }
     // este metodo convierte a hashmap los datos para guardarlos en la base de datos
     func getMap() -> [String:Any] {
@@ -33,7 +37,9 @@ class Perfil: NSObject {
             "Localizacion": sLocalizacion as Any,
             "Poblacion": sPoblacion as Any,
             "Provincia": sProvincia as Any,
-            "Imagen": sImagen as Any
+            "Imagen": sImagen as Any,
+            "Longitud": sLongitud as Any,
+            "Latitud": sLatitud as Any
         ]
     }
    

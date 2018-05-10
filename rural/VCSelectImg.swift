@@ -17,7 +17,10 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBOutlet var txtLocalizacion:NuevoTextField?
     @IBOutlet var txtProvincia:NuevoTextField?
     @IBOutlet var txtPoblacion:NuevoTextField?
+    @IBOutlet var txtLatitud:NuevoTextField?
+    @IBOutlet var txtLongitud:NuevoTextField?
     var downloadURL = ""
+  
         let imagePicker = UIImagePickerController()
     let alert:UIAlertController = UIAlertController(title: "Subir foto de perfil", message:  "¡Has subido tu imagen!", preferredStyle: UIAlertControllerStyle.actionSheet)
     let alert1:UIAlertController = UIAlertController(title: "Perfil Subido", message:  "¡Has subido tu perfil!", preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -71,6 +74,14 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
         DataHolder.sharedInstance.miPerfil.sLocalizacion=txtLocalizacion?.text
         DataHolder.sharedInstance.miPerfil.sProvincia=txtProvincia?.text
         DataHolder.sharedInstance.miPerfil.sPoblacion=txtPoblacion?.text
+        //var firstNumberConv:Double? = Double(txtLatitud?.text)!
+        //var secondNumberConv:Double? = Double(txtLongitud?.text)!
+        let auxLatitud :String? = (txtLatitud?.text!)
+        let auxLongitud :String? = (txtLongitud?.text!)
+        let Latitud = (auxLatitud! as NSString).doubleValue
+        let Longitud = (auxLongitud! as NSString).doubleValue
+        DataHolder.sharedInstance.miPerfil.sLatitud=Latitud
+        DataHolder.sharedInstance.miPerfil.sLongitud=Longitud
         DataHolder.sharedInstance.miPerfil.sImagen = downloadURL
         DataHolder.sharedInstance.savePerfil()
         self.present(alert1, animated: true)
@@ -96,7 +107,7 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
             }
             
             // Metadata contains file metadata such as size, content-type, and download URL.
-            self.downloadURL = metadata.path!
+            self.downloadURL = (metadata.downloadURL()?.absoluteString)!//.path!
            // print("AAAA!!!! ",downloadURL)
             
             

@@ -63,9 +63,9 @@ class VCMapa: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,Dat
             //print("---------------------->>>>>>>>> ",DataHolder.sharedInstance.arCiudades.count)
             for pueblo in DataHolder.sharedInstance.arCiudades {
                 var coordTemp:CLLocationCoordinate2D = CLLocationCoordinate2D()
-                coordTemp.latitude = pueblo.dlat!
-                coordTemp.longitude = pueblo.dlon!
-                agregarPin(coordenada: coordTemp, titulo: pueblo.sNombre! )
+                coordTemp.latitude = DataHolder.sharedInstance.miPerfil.sLatitud!
+                coordTemp.longitude = DataHolder.sharedInstance.miPerfil.sLongitud!
+                agregarPin(coordenada: coordTemp, titulo: DataHolder.sharedInstance.miPerfil.sNombre! )
             }
             print("me he descargado mapa")
         }else {

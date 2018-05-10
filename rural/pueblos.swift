@@ -34,9 +34,9 @@ class pueblos: NSObject {
         dlon=valores[IDlon] as? Double
         dlat=valores[IDlat] as? Double
         
-        if sImagen == nil{
-            sImagen = "gs://proyectotest-95913.appspot.com/1.jpg"
-        }
+       // if sImagen == nil{
+          //  sImagen = "gs://proyectotest-95913.appspot.com/1.jpg"
+       // }
     }
     func getMap()->[String:Any]
     {

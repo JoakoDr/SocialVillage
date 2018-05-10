@@ -30,7 +30,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,DataHolderDelegate {
         let celda = tableView.dequeueReusableCell(withIdentifier: "idCelda") as! celdaPrototiopo
         celda.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
         //celda.mostrarImagen(url: DataHolder.sharedInstance.arPueblos[indexPath.row].sImagen!)
-        celda.mostrarImagen(url:  DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
+        celda.mostrarImagen(url:  DataHolder.sharedInstance.miPerfil.sImagen!)
         return celda
     }
     

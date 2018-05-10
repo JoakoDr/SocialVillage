@@ -40,7 +40,7 @@ class DataHolder: NSObject {
         //arCiudades;:[pueblos] = []
         var blFin:Bool = false
         
-        DataHolder.sharedInstance.firestoreDB?.collection("pueblos").addSnapshotListener() { (querySnapshot, err) in
+        DataHolder.sharedInstance.firestoreDB?.collection("perfiles").addSnapshotListener() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 //blFin = false
