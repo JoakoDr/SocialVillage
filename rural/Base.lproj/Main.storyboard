@@ -248,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yG-Zc-EdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1055.2" y="834.33283358320841"/>
+            <point key="canvasLocation" x="-3450" y="834"/>
         </scene>
         <!--Marcar Pueblos-->
         <scene sceneID="uVT-ai-K6R">
@@ -692,7 +692,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Scc-Ci-eZD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="382"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="281"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -797,6 +797,6 @@
         <image name="galeria" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uyq-w2-4Wa"/>
+        <segue reference="LUJ-Ks-mML"/>
     </inferredMetricsTieBreakers>
 </document>

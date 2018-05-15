@@ -24,7 +24,7 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
         let imagePicker = UIImagePickerController()
     let alert:UIAlertController = UIAlertController(title: "Subir foto de perfil", message:  "¡Has subido tu imagen!", preferredStyle: UIAlertControllerStyle.actionSheet)
     let alert1:UIAlertController = UIAlertController(title: "Perfil Subido", message:  "¡Has subido tu perfil!", preferredStyle: UIAlertControllerStyle.actionSheet)
-    
+       let alert2:UIAlertController = UIAlertController(title: "Error", message:  "¡Completa todos los campos!", preferredStyle: UIAlertControllerStyle.actionSheet)
 
     
     
@@ -82,15 +82,54 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
         let Longitud = (auxLongitud! as NSString).doubleValue
         DataHolder.sharedInstance.miPerfil.sLatitud=Latitud
         DataHolder.sharedInstance.miPerfil.sLongitud=Longitud
-        DataHolder.sharedInstance.miPerfil.sImagen = downloadURL
-        DataHolder.sharedInstance.savePerfil()
-        self.present(alert1, animated: true)
+           DataHolder.sharedInstance.miPerfil.sImagen! = self.downloadURL
+            print("----IMAGEN-->",self.downloadURL)
+            DataHolder.sharedInstance.savePerfil()
+            self.present(alert1, animated: true)
+        
+        
+            
+        
+       
 
         
     }
     
     @IBAction func accionBotonSubir()
     {
+        /*
+        if imgData != nil{
+            
+            let tiempoMilis:Int = Int((Date().timeIntervalSince1970 * 1000.0).rounded())
+            
+            let ruta:String = String(format: "imagenes/imagen%d.jpg", tiempoMilis)
+            
+            let perfiles = DataHolder.sharedInstance.firStorageRef?.child(ruta)
+            let metadata =  StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+        let uploadTask = perfiles?.putData(imgData! , metadata:nil){(metadata, error) in
+                
+            guard let metadata = metadata else{
+                    
+                    return
+                    
+                    }
+                
+                let downloadURL = metadata.downloadURL()
+                
+                DataHolder.sharedInstance.miPerfil.sImagen = downloadURL?.absoluteString
+                
+                DataHolder.sharedInstance.savePerfil()
+         
+                */
+            //DataHolder.sharedInstance.miPerfil.idurlimg = downloadURL.
+                
+            
+            
+            
+
+        
        
         if imgData != nil {
             let tiempoMilis:Int = Int((Date().timeIntervalSince1970 * 1000.0).rounded())
@@ -105,17 +144,20 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
                 // Uh-oh, an error occurred!
                 return
             }
-            
+            let downloadURL = metadata.downloadURL()
             // Metadata contains file metadata such as size, content-type, and download URL.
-            self.downloadURL = (metadata.downloadURL()?.absoluteString)!//.path!
+            self.downloadURL = (downloadURL?.absoluteString)!//.path!
+            DataHolder.sharedInstance.savePerfil()
+            self.present(self.alert, animated: true)
            // print("AAAA!!!! ",downloadURL)
             print("----->"+self.downloadURL)
             
             
         }
 
-     self.present(alert, animated: true)
+     
     }
+        
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let img = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -138,4 +180,5 @@ class VCSelectImg: UIViewController, UIImagePickerControllerDelegate, UINavigati
     */
 
 }
+
 

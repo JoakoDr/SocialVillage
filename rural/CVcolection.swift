@@ -17,6 +17,7 @@ class CVcolection: UICollectionViewCell,DataHolderDelegate {
     
     func mostrarImagen(url:String) {
         let imgdes = DataHolder.sharedInstance.hmImagenes[url]
+        //print("------->>>URLLLLL:",DataHolder.sharedInstance.hmImagenes[url])
         print(imgdes)
          btnSalir?.layer.cornerRadius = 15
         if(imgdes == nil){
@@ -26,7 +27,7 @@ class CVcolection: UICollectionViewCell,DataHolderDelegate {
             
             // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
             gsReference?.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if let error = error {
+                if error != nil {
                     // Uh-oh, an error occurred!
                 } else {
                     // Data for "images/island.jpg" is returned
