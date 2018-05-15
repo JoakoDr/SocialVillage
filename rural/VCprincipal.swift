@@ -22,8 +22,8 @@ class VCprincipal: UIViewController,UICollectionViewDelegate,UICollectionViewDat
         let cell:CVcolection = collectionView.dequeueReusableCell(withReuseIdentifier: "idcelda2", for: indexPath) as! CVcolection
         cell.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
         print(DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre as Any)
-        cell.mostrarImagen(url: DataHolder.sharedInstance.miPerfil.sImagen!)//DataHolder.sharedInstance.miPerfil.sImagen!)
-        print("------------------------>"+DataHolder.sharedInstance.miPerfil.sImagen!)
+        cell.mostrarImagen(url: DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)//DataHolder.sharedInstance.miPerfil.sImagen!)
+        print("------------------------>"+DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
         //arCiudades[indexPath.row].sImagen!)
         return cell
     
