@@ -20,13 +20,17 @@ class VCprincipal: UIViewController,UICollectionViewDelegate,UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:CVcolection = collectionView.dequeueReusableCell(withReuseIdentifier: "idcelda2", for: indexPath) as! CVcolection
-        cell.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
+        /*cell.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
         print(DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre as Any)
         cell.mostrarImagen(url: DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)//DataHolder.sharedInstance.miPerfil.sImagen!)
         print("------------------------>"+DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
         //arCiudades[indexPath.row].sImagen!)
         return cell
-    
+    */
+        cell.lblNombre?.text = DataHolder.sharedInstance.arCiudades[indexPath.row].sNombre
+        //celda.mostrarImagen(url: DataHolder.sharedInstance.arPueblos[indexPath.row].sImagen!)
+        cell.mostrarImagen(url:  DataHolder.sharedInstance.arCiudades[indexPath.row].sImagen!)
+        return cell
     }
     
     

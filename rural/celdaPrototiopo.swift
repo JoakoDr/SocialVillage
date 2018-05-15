@@ -12,6 +12,8 @@ import FirebaseStorage
 class celdaPrototiopo: UITableViewCell {
     @IBOutlet var imagen:UIImageView?
     @IBOutlet var lblNombre:UILabel?
+    @IBOutlet var Label:UILabel?
+    
     var imagenDescargada:UIImage?
     override func awakeFromNib() {
         super.awakeFromNib()
